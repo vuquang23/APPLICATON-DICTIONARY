@@ -14,9 +14,9 @@ public class DictionaryApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML_File/MainController.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML_File/Main.fxml"));
         primaryStage.setTitle("En - Vi Dictionary");
-        primaryStage.setScene(new Scene(root, 900, 500));
+        primaryStage.setScene(new Scene(root, 700, 450));
         primaryStage.show();
     }
 }
