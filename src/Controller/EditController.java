@@ -38,11 +38,15 @@ public class EditController {
         if (action.getSource() == changeButton) {
             String editWord = edit.getText();
             String byWord = by.getText();
-            this.mainController.dict.editWord(editWord, byWord);
+            boolean check = this.mainController.dict.editWord(editWord, byWord);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText("Message");
-            alert.setContentText("Edit Word Successully!");
+            if (check == true) {
+                alert.setContentText("Edit Word Successully!");
+            } else {
+                alert.setContentText("Error: Word Not In Dict!!!");
+            }
             alert.showAndWait();
             edit.clear();
             by.clear();

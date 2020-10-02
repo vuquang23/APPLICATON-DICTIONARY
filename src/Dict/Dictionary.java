@@ -142,40 +142,43 @@ public class Dictionary {
 
 
     /*******************ERASE A WORD***********************************************/
-    public void eraseWord(String s) {
+    public boolean eraseWord(String s) {
         StringBuilder sBuilder = new StringBuilder(s);
         if (invalid(sBuilder)) {
-            return;
+            return false;
         }
         s = sBuilder.toString();
         int index = lookUp(s);
         if (index == -1) {
             System.out.println("Word Not Existed In Dict - So Not Need To Be Removed!");
+            return false;
         } else {
             T.eraseWord(s);
             erasedWord.put(index, true);
+            return true;
         }
 
     }
 
     /*********************EDIT A WORD*********************************/
-    public void editWord(String Target, String newTarget) {
+    public boolean editWord(String Target, String newTarget) {
         StringBuilder starget = new StringBuilder(Target);
         StringBuilder snewTarget = new StringBuilder(newTarget);
         if (invalid(starget) || invalid(snewTarget)) {
-            return;
+            return false;
         }
         Target = starget.toString();
         newTarget = snewTarget.toString();
         int index = lookUp(Target.toString());
 
         if (index == -1) {
+            return false;
         } else {
             ArrayList<String> meanOfTarget = getExplain(index);
             for (int i = 0; i < meanOfTarget.size(); ++i) {
                 insertDict(newTarget, meanOfTarget.get(i));
             }
-            eraseWord(Target);
+            return eraseWord(Target);
         }
     }
 

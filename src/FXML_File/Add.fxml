@@ -10,7 +10,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddController">
     <children>
         <TextField fx:id="target" layoutX="49.0" layoutY="73.0" prefHeight="42.0" prefWidth="433.0"
-                   promptText="A Word In Dict..." text="Input..."/>
+                   promptText="Input..."/>
         <Text layoutX="49.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Word:"
               wrappingWidth="204.03271484375">
             <font>
@@ -24,7 +24,7 @@
             </font>
         </Text>
         <TextField fx:id="explain" layoutX="49.0" layoutY="200.0" prefHeight="50.0" prefWidth="433.0"
-                   promptText="Another Word..." text="Mean..."/>
+                   promptText="Mean..."/>
         <Button fx:id="addButton" layoutX="49.0" layoutY="294.0" mnemonicParsing="false" onAction="#addWord"
                 text="Add!"/>
     </children>

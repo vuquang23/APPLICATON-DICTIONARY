@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class HomeController {
@@ -43,6 +44,7 @@ public class HomeController {
     }
 
     public void showRight() {
+        speakerButton.setVisible(true);
         String inputText = inputData.getText();
         ArrayList<String> meaning = this.mainController.dict.getMeaning(inputText);
         if (meaning.size() == 0) {
@@ -65,6 +67,20 @@ public class HomeController {
     public void findMeaning(ActionEvent event) {
         if (event.getSource() == searchButton) {
             showRight();
+        }
+    }
+
+    @FXML
+    private Button speakerButton;
+
+    @FXML
+    void speaker(ActionEvent event) {
+        if (event.getSource() == speakerButton) {
+            String s = showWord.getText();
+            try {
+                GoogleAPI.read(s, "en");
+            } catch (Exception e) {
+            }
         }
     }
 
@@ -100,6 +116,7 @@ public class HomeController {
         showMeaning.setText("");
         ArrayList<String> allWord = this.mainController.dict.showWordList();
         searchList.getItems().setAll(allWord);
+        speakerButton.setVisible(false);
     }
 
     @FXML

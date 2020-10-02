@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +34,7 @@ public class MainController implements Initializable {
         anchorpane = null;
     }
 
+
     @FXML
     private Button editButton;
     @FXML
@@ -52,6 +52,7 @@ public class MainController implements Initializable {
         anchorpane = null;
     }
 
+
     @FXML
     private Button addButton;
     @FXML
@@ -68,6 +69,7 @@ public class MainController implements Initializable {
         this.contentPane.getChildren().setAll(addPane);
         anchorpane = null;
     }
+
 
     @FXML
     private Button eraseButton;
@@ -87,6 +89,38 @@ public class MainController implements Initializable {
     }
 
     @FXML
+    private Button googleButton;
+    @FXML
+    private AnchorPane googlePane;
+    @FXML
+    private GoogleController googleController;
+
+    public void showgooglePane() {
+        AnchorPane anchorpane = new AnchorPane();
+        AnchorPane.setTopAnchor(googlePane, 0.0);
+        AnchorPane.setLeftAnchor(googlePane, 0.0);
+        AnchorPane.setRightAnchor(googlePane, 0.0);
+        AnchorPane.setBottomAnchor(googlePane, 0.0);
+        this.contentPane.getChildren().setAll(googlePane);
+        anchorpane = null;
+    }
+
+    @FXML
+    private Button backButton;
+    @FXML
+    private AnchorPane backPane;
+
+    public void showbackPane() {
+        AnchorPane anchorpane = new AnchorPane();
+        AnchorPane.setTopAnchor(backPane, 0.0);
+        AnchorPane.setLeftAnchor(backPane, 0.0);
+        AnchorPane.setRightAnchor(backPane, 0.0);
+        AnchorPane.setBottomAnchor(backPane, 0.0);
+        this.contentPane.getChildren().setAll(backPane);
+        anchorpane = null;
+    }
+
+    @FXML
     public void Handle(ActionEvent action) {
         if (action.getSource() == homeButton) {
             showhomePane();
@@ -100,8 +134,12 @@ public class MainController implements Initializable {
         } else if (action.getSource() == eraseButton) {
             showerasePane();
             eraseController.Run(this);
+        } else if (action.getSource() == googleButton) {
+            showgooglePane();
+            googleController.Run();
+        } else {
+            showbackPane();
         }
-
     }
 
     @Override
@@ -142,6 +180,23 @@ public class MainController implements Initializable {
             eraseController = fxmlLoader.getController();
         } catch (IOException e) {
         }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/FXML_File/Google.fxml"));
+            googlePane = fxmlLoader.load();
+            googleController = fxmlLoader.getController();
+        } catch (IOException e) {
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/FXML_File/Back.fxml"));
+            backPane = fxmlLoader.load();
+        } catch (IOException e) {
+        }
+
+        showbackPane();
     }
 
 }

@@ -33,13 +33,23 @@
                             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0"
                             AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label fx:id="showWord" layoutX="14.0" layoutY="21.0" prefHeight="12.0" prefWidth="278.0">
+                        <Label fx:id="showWord" layoutX="14.0" layoutY="21.0" prefHeight="36.0" prefWidth="234.0">
                             <font>
                                 <Font name="Ubuntu" size="31.0"/>
                             </font>
                         </Label>
                         <Label fx:id="showMeaning" alignment="TOP_LEFT" layoutX="10.0" layoutY="69.0" prefHeight="317.0"
                                prefWidth="278.0" textAlignment="JUSTIFY" wrapText="true"/>
+                        <Button fx:id="speakerButton" layoutX="253.0" layoutY="26.0" mnemonicParsing="false"
+                                onAction="#speaker" prefHeight="26.0" prefWidth="27.0">
+                            <graphic>
+                                <ImageView fitHeight="18.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/icons8-voice-50.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
                     </children>
                 </AnchorPane>
             </children>
