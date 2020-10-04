@@ -32,8 +32,8 @@ public class GoogleController {
             String english = English.getText();
             String vietnamese = "";
             try {
-//                vietnamese = GoogleAPI.trans("en", "vi", english);
-                vietnamese = "ebcde";
+                vietnamese = GoogleAPI.trans("en", "vi", english);
+//                vietnamese = "ebcde";
             } catch (Exception e) {
             }
             Vietnamese.setText(vietnamese);

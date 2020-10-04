@@ -183,14 +183,18 @@ public class Dictionary {
     }
 
     /*********************************ADD A WORD***********************************/
-    public void insertAWord(String Target, String Meaning) {
+    public boolean insertAWord(String Target, String Meaning) {
         StringBuilder starget = new StringBuilder(Target);
 
         if (invalid(starget)) {
-            return;
+            return false;
+        }
+        for (int i = 0; i < Meaning.length(); ++i) {
+            if (Character.isDigit(Meaning.charAt(i))) return false;
         }
         Target = starget.toString();
         insertDict(Target, Meaning);
+        return true;
     }
 
 

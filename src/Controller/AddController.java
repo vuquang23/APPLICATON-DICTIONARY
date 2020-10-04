@@ -38,11 +38,15 @@ public class AddController {
         if (action.getSource() == addButton) {
             String editWord = target.getText();
             String byWord = explain.getText();
-            this.mainController.dict.insertAWord(editWord, byWord);
+            boolean done = this.mainController.dict.insertAWord(editWord, byWord);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText("Message");
-            alert.setContentText("Add Word Successully!");
+            if (done) {
+                alert.setContentText("Add Word Successully!");
+            } else {
+                alert.setContentText("Wrong Format Of A Word!");
+            }
             alert.showAndWait();
             target.clear();
             explain.clear();
