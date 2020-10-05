@@ -1,15 +1,13 @@
 package Controller;
 
-import Dict.*;
-import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 
 public class GoogleController {
 
@@ -32,7 +30,7 @@ public class GoogleController {
             String english = English.getText();
             String vietnamese = "";
             try {
-                vietnamese = GoogleAPI.trans("en", "vi", english);
+                vietnamese = MicrosoftTranslatorAPI.Translate(english);
 //                vietnamese = "ebcde";
             } catch (Exception e) {
             }

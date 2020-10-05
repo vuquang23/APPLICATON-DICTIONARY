@@ -1,14 +1,14 @@
 package Controller;
 
+import javazoom.jl.player.Player;
+import org.json.JSONArray;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLEncoder;
-
-import org.json.JSONArray;
-import javazoom.jl.player.Player;
 
 public class GoogleAPI {
 
@@ -49,9 +49,4 @@ public class GoogleAPI {
         Player sound = new Player(data);
         sound.play();
     }
-
-//    public static void main(String[] args) throws Exception {
-//        String s = trans("en","vi","wind tells me where to go");
-//        read("Trí đẹp trai.", "vi");
-//    }
 }

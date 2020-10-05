@@ -1,7 +1,10 @@
 package Dict;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Dictionary {
     private ArrayList<Word> wordList;
@@ -10,6 +13,7 @@ public class Dictionary {
     private ArrayList<String> prefix;
     private ArrayList<String> meaningNULL;
     private ArrayList<String> allWord;
+
 
     /**
      * Constructor
@@ -47,6 +51,9 @@ public class Dictionary {
             char c = s.charAt(i);
             if (Character.isLetter(c)) {
                 s.setCharAt(i, Character.toLowerCase(c));
+                if (Math.abs(s.charAt(i) - 'a') > 25) {
+                    return true;
+                }
             } else {
                 if (Character.compare(c, ' ') != 0) {
                     System.out.println("Word should contain only character!!!");
