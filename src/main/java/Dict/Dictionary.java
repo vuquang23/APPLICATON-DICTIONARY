@@ -241,6 +241,7 @@ public class Dictionary {
         if (invalid(starget)) {
             return 0; // invalid format word
         }
+        Target = starget.toString();
         if (lookUp(Target) != -1) {
             return 1; // word existed in dict
         }
@@ -266,10 +267,5 @@ public class Dictionary {
         }
         return allWord;
     }
-//
-//    public static void main(String[] args) {
-//        Dictionary dict = new Dictionary();
-//        dict.eraseWord("a b c");
-//    }
 
 }
