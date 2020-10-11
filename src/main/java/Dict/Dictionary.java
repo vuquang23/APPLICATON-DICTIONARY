@@ -12,6 +12,7 @@ public class Dictionary {
     private HashMap<Integer, Boolean> erasedWord;
     private ArrayList<String> prefix;
     private ArrayList<String> allWord;
+    final String path = System.getProperty("user.dir") + "/src/main/java/Data/dict_hh.db";
 
     /**
      * Constructor
@@ -27,7 +28,6 @@ public class Dictionary {
         Statement stmt;
         try {
             Class.forName("org.sqlite.JDBC");
-            String path = System.getProperty("user.dir") + "/src/main/java/Data/dict_hh.db";
             c = DriverManager.getConnection("jdbc:sqlite:" + path);
             c.setAutoCommit(false);
             stmt = c.createStatement();
@@ -165,9 +165,44 @@ public class Dictionary {
         } else {
             T.eraseWord(s);
             erasedWord.put(index, true);
+
+            /*erase from database*/
+            Connection c = null;
+            Statement stmt = null;
+            try {
+                Class.forName("org.sqlite.JDBC");
+                c = DriverManager.getConnection("jdbc:sqlite:" + path);
+                c.setAutoCommit(false);
+                stmt = c.createStatement();
+                String command = "DELETE FROM av where word LIKE '" + s + "';";
+                stmt.executeUpdate(command);
+                stmt.close();
+                c.commit();
+                c.close();
+            } catch (Exception e) {
+                System.out.println(e.getCause());
+            }
             return 2;
         }
 
+    }
+
+    void insertToDatabase(String newTarget, String newExplain) {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:" + path);
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String command = "INSERT INTO av (id,word,html,description,pronounce) " +
+                    "VALUES (" + (wordList.size() + 10000000) + ", '" + newTarget + "', '" + newExplain + "', '#', '#' );";
+            stmt.executeUpdate(command);
+            stmt.close();
+            c.commit();
+            c.close();
+        } catch (Exception e) {
+        }
     }
 
     /*********************EDIT A WORD*********************************/
@@ -193,6 +228,9 @@ public class Dictionary {
         newExplain = "<h1>" + newTarget + "</h1>"
                 + "<ul>" + newExplain + "</ul>";
         insertDict(newTarget, newExplain);
+
+        /*insert to database*/
+        insertToDatabase(newTarget, newExplain);
         return 4; /// success;
     }
 
@@ -211,6 +249,7 @@ public class Dictionary {
         Meaning = "<h1>" + Target + "</h1>"
                 + "<ul>" + Meaning + "</ul>";
         insertDict(Target, Meaning);
+        insertToDatabase(Target, Meaning);
         return 2; // success
     }
 
@@ -227,4 +266,10 @@ public class Dictionary {
         }
         return allWord;
     }
+//
+//    public static void main(String[] args) {
+//        Dictionary dict = new Dictionary();
+//        dict.eraseWord("a b c");
+//    }
+
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,14 +12,22 @@
             fx:controller="Controller.EraseController">
     <children>
         <TextField fx:id="word" layoutX="119.0" layoutY="161.0" onAction="#eraseWord" prefHeight="42.0"
-                   prefWidth="433.0" promptText="A Word In Dict..."/>
-        <Text layoutX="117.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erase Word:"
+                   prefWidth="433.0" promptText="A Word In Dict...">
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </TextField>
+        <Text fill="#cf5555" layoutX="117.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erase Word:"
               wrappingWidth="204.03271484375">
             <font>
                 <Font size="24.0"/>
             </font>
         </Text>
         <Button fx:id="EraseButton" layoutX="595.0" layoutY="169.0" mnemonicParsing="false" onAction="#eraseWord"
-                text="Erase!"/>
+                text="Erase!">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
     </children>
 </AnchorPane>

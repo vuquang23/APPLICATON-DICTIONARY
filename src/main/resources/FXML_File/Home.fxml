@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -17,9 +18,17 @@
             <children>
                 <ListView fx:id="searchList" layoutX="14.0" layoutY="48.0" onMouseClicked="#selectWordList"
                           prefHeight="438.0" prefWidth="297.0" AnchorPane.bottomAnchor="14.0"
-                          AnchorPane.topAnchor="48.0"/>
+                          AnchorPane.topAnchor="48.0">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </ListView>
                 <TextField fx:id="inputData" layoutX="14.0" layoutY="14.0" onKeyReleased="#startSearch"
-                           prefHeight="26.0" prefWidth="258.0" promptText="Search..."/>
+                           prefHeight="26.0" prefWidth="258.0" promptText="Search...">
+                    <cursor>
+                        <Cursor fx:constant="TEXT"/>
+                    </cursor>
+                </TextField>
                 <AnchorPane layoutX="357.0" layoutY="1.0" prefHeight="500.0" prefWidth="443.0"
                             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="0.0"
                             AnchorPane.topAnchor="0.0">
@@ -38,6 +47,9 @@
                             </image>
                         </ImageView>
                     </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </Button>
             </children>
         </AnchorPane>
