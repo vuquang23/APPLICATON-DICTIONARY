@@ -1,6 +1,7 @@
 package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -32,6 +33,7 @@ public class HomeController {
     }
 
     public void showRight() {
+        starButton.setVisible(true);
         String inputText = inputData.getText();
         String meaning = this.mainController.dict.getMeaning(inputText);
         if (meaning.equals("-1")) {
@@ -80,13 +82,34 @@ public class HomeController {
     }
 
     @FXML
+    private Button starButton;
+
+    public void starWord(ActionEvent event) {
+        if (event.getSource() == starButton) {
+            boolean ok = this.mainController.dict.insertToBookMark(inputData.getText());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Alert");
+            alert.setHeaderText("Message");
+            String status;
+            if (!ok) {
+                status = "Existed In Bookmark!";
+            } else {
+                status = "Inserted to Bookmark!";
+            }
+            alert.setContentText(status);
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
     public void Run(MainController currentState) {
         this.mainController = currentState;
         inputData.clear();
         engine = webView.getEngine();
-        engine.reload();
+        engine.load("");
         ArrayList<String> allWord = this.mainController.dict.showWordList();
         searchList.getItems().setAll(allWord);
+        starButton.setVisible(false);
     }
 
     @FXML

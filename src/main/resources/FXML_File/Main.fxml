@@ -32,7 +32,7 @@
                     AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0">
             <children>
                 <Button fx:id="homeButton" layoutX="10.0" layoutY="29.0" mnemonicParsing="false" onAction="#Handle"
-                        prefHeight="30.0" prefWidth="37.0">
+                        prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -45,7 +45,7 @@
                     </cursor>
                 </Button>
                 <Button fx:id="editButton" layoutX="10.0" layoutY="59.0" mnemonicParsing="false" onAction="#Handle"
-                        prefHeight="30.0" prefWidth="37.0">
+                        prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -58,7 +58,7 @@
                     </cursor>
                 </Button>
                 <Button fx:id="addButton" layoutX="10.0" layoutY="89.0" mnemonicParsing="false" onAction="#Handle"
-                        prefHeight="30.0" prefWidth="37.0">
+                        prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -70,8 +70,8 @@
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Button fx:id="microsoftButton" layoutX="10.0" layoutY="149.0" mnemonicParsing="false"
-                        onAction="#Handle" prefHeight="30.0" prefWidth="6.0">
+                <Button fx:id="microsoftButton" layoutX="10.0" layoutY="179.0" mnemonicParsing="false"
+                        onAction="#Handle" prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -84,7 +84,7 @@
                     </cursor>
                 </Button>
                 <Button fx:id="eraseButton" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onAction="#Handle"
-                        prefHeight="30.0" prefWidth="37.0">
+                        prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
                     <graphic>
                         <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -108,6 +108,16 @@
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
+                </Button>
+                <Button fx:id="bookmarkButton" layoutX="11.0" layoutY="149.0" mnemonicParsing="false" onAction="#Handle"
+                        prefHeight="30.0" prefWidth="37.0" AnchorPane.leftAnchor="10.0">
+                    <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../icon/icons8-star-26.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
             </children>
         </AnchorPane>

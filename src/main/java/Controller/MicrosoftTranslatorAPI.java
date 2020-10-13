@@ -43,8 +43,4 @@ public class MicrosoftTranslatorAPI {
         }
     }
 
-//    public static void main(String[] args) throws IOException {
-//        System.out.println(Translate("Hello I am Vu Quang"));
-//    }
-
 }

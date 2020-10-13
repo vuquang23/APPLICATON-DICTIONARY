@@ -12,7 +12,12 @@ public class Dictionary {
     private HashMap<Integer, Boolean> erasedWord;
     private ArrayList<String> prefix;
     private ArrayList<String> allWord;
-    final String path = System.getProperty("user.dir") + "/src/main/java/Data/dict_hh.db";
+    static String path = System.getProperty("user.dir") + "/src/main/java/Data/";
+
+    private ArrayList<String> bookmark;
+    private ArrayList<String> realbookmark;
+    private HashMap<String, Boolean> inBookmark;
+
 
     /**
      * Constructor
@@ -24,11 +29,16 @@ public class Dictionary {
         prefix = new ArrayList<String>();
         allWord = new ArrayList<String>();
 
+        inBookmark = new HashMap<>();
+        bookmark = new ArrayList<String>();
+        realbookmark = new ArrayList<String>();
+
+        /*Read dictionary*/
         Connection c;
         Statement stmt;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:" + path);
+            c = DriverManager.getConnection("jdbc:sqlite:" + path + "dict_hh.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             ResultSet result = stmt.executeQuery("SELECT * FROM av;");
@@ -49,6 +59,34 @@ public class Dictionary {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
+
+        /*read bookmark*/
+        c = null;
+        stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:" + path + "bookmark.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM BOOKMARK;");
+            while (result.next()) {
+                String s1 = result.getString("word");
+                StringBuilder ss1 = new StringBuilder(s1);
+                if (invalid(ss1)) {
+                    continue;
+                }
+                s1 = ss1.toString();
+                bookmark.add(s1);
+                inBookmark.put(s1, true);
+            }
+            result.close();
+            stmt.close();
+            c.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+
     }
 
     public static boolean invalid(StringBuilder s) {
@@ -171,7 +209,7 @@ public class Dictionary {
             Statement stmt = null;
             try {
                 Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:" + path);
+                c = DriverManager.getConnection("jdbc:sqlite:" + path + "dict_hh.db");
                 c.setAutoCommit(false);
                 stmt = c.createStatement();
                 String command = "DELETE FROM av where word LIKE '" + s + "';";
@@ -192,7 +230,7 @@ public class Dictionary {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:" + path);
+            c = DriverManager.getConnection("jdbc:sqlite:" + path + "dict_hh.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String command = "INSERT INTO av (id,word,html,description,pronounce) " +
@@ -255,7 +293,7 @@ public class Dictionary {
     }
 
 
-    /*************************************************************8*/
+    /**************************************************************/
     public ArrayList<String> showWordList() {
         allWord.clear();
         for (int i = 0; i < wordList.size(); ++i) {
@@ -266,6 +304,67 @@ public class Dictionary {
             allWord.add(target);
         }
         return allWord;
+    }
+
+    /****************************************************************/
+    public ArrayList<String> showBookMark() {
+        realbookmark.clear();
+        for (int i = 0; i < bookmark.size(); ++i) {
+            String target = bookmark.get(i);
+            if (inBookmark.containsKey(target)) {
+                realbookmark.add(target);
+            }
+        }
+        return realbookmark;
+    }
+
+    /***************************************************************/
+    public boolean insertToBookMark(String s) {
+        if (inBookmark.containsKey(s)) {
+            return false;
+        }
+        inBookmark.put(s, true);
+        bookmark.add(s);
+
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:" + path + "bookmark.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String command = "INSERT INTO BOOKMARK (word) " +
+                    "VALUES (" + "'" + s + "'" + ");";
+            stmt.executeUpdate(command);
+            stmt.close();
+            c.commit();
+            c.close();
+        } catch (Exception e) {
+        }
+
+        return true;
+    }
+
+    /***************************************************************/
+    public void removeFromBookMark(String s) {
+        inBookmark.remove(s);
+        bookmark.remove(s);
+
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:" + path + "bookmark.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String command = "DELETE FROM BOOKMARK where word LIKE '" + s + "';";
+            stmt.executeUpdate(command);
+            stmt.close();
+            c.commit();
+            c.close();
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+        }
     }
 
 }

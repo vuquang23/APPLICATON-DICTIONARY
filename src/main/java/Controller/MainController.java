@@ -88,6 +88,25 @@ public class MainController implements Initializable {
         anchorpane = null;
     }
 
+
+    @FXML
+    private Button bookmarkButton;
+    @FXML
+    private AnchorPane bookmarkPane;
+    @FXML
+    private BookmarkController bookmarkController;
+
+    public void showbookmarkPane() {
+        AnchorPane anchorpane = new AnchorPane();
+        AnchorPane.setTopAnchor(bookmarkPane, 0.0);
+        AnchorPane.setLeftAnchor(bookmarkPane, 0.0);
+        AnchorPane.setRightAnchor(bookmarkPane, 0.0);
+        AnchorPane.setBottomAnchor(bookmarkPane, 0.0);
+        this.contentPane.getChildren().setAll(bookmarkPane);
+        anchorpane = null;
+    }
+
+
     @FXML
     private Button microsoftButton;
     @FXML
@@ -104,6 +123,7 @@ public class MainController implements Initializable {
         this.contentPane.getChildren().setAll(microsoftPane);
         anchorpane = null;
     }
+
 
     @FXML
     private Button backButton;
@@ -137,6 +157,9 @@ public class MainController implements Initializable {
         } else if (action.getSource() == microsoftButton) {
             showmicrosoftPane();
             microsoftController.Run();
+        } else if (action.getSource() == bookmarkButton) {
+            showbookmarkPane();
+            bookmarkController.Run(this);
         } else {
             showbackPane();
         }
@@ -193,6 +216,14 @@ public class MainController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/FXML_File/Back.fxml"));
             backPane = fxmlLoader.load();
+        } catch (IOException e) {
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/FXML_File/Bookmark.fxml"));
+            bookmarkPane = fxmlLoader.load();
+            bookmarkController = fxmlLoader.getController();
         } catch (IOException e) {
         }
 
