@@ -9,46 +9,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeController">
     <children>
-        <AnchorPane prefHeight="400.0" prefWidth="313.0" style="-fx-background-color: #FFFFFF;"
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                    AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="400.0" prefWidth="313.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ListView fx:id="searchList" layoutX="14.0" layoutY="48.0" onMouseClicked="#selectWordList"
-                          prefHeight="438.0" prefWidth="297.0" AnchorPane.bottomAnchor="14.0"
-                          AnchorPane.topAnchor="48.0">
+                <ListView fx:id="searchList" layoutX="14.0" layoutY="48.0" onMouseClicked="#selectWordList" prefHeight="438.0" prefWidth="297.0" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="48.0">
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </ListView>
-                <TextField fx:id="inputData" layoutX="14.0" layoutY="14.0" onKeyReleased="#startSearch"
-                           prefHeight="26.0" prefWidth="258.0" promptText="Search...">
+                <TextField fx:id="inputData" layoutX="14.0" layoutY="14.0" onKeyReleased="#startSearch" prefHeight="26.0" prefWidth="258.0" promptText="Search...">
                     <cursor>
-                        <Cursor fx:constant="TEXT"/>
+                        <Cursor fx:constant="TEXT" />
                     </cursor>
                 </TextField>
-                <AnchorPane layoutX="357.0" layoutY="1.0" prefHeight="500.0" prefWidth="443.0"
-                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="0.0"
-                            AnchorPane.topAnchor="0.0">
+                <AnchorPane layoutX="357.0" layoutY="1.0" prefHeight="500.0" prefWidth="443.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <WebView fx:id="webView" layoutX="-45.0" prefHeight="500.0" prefWidth="441.0"
-                                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                 AnchorPane.topAnchor="0.0"/>
+                        <WebView fx:id="webView" layoutX="-45.0" layoutY="43.0" prefHeight="457.0" prefWidth="443.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0" />
+                        <Button fx:id="starButton" layoutX="21.0" layoutY="17.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#starWord" prefHeight="26.0" prefWidth="34.0" AnchorPane.topAnchor="16.0">
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/icons8-star-26.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
                     </children>
                 </AnchorPane>
-                <Button fx:id="speakerButton" layoutX="282.0" layoutY="14.0" mnemonicParsing="false" onAction="#speaker"
-                        prefHeight="26.0" prefWidth="0.0" AnchorPane.topAnchor="14.0">
+                <Button fx:id="speakerButton" layoutX="282.0" layoutY="14.0" mnemonicParsing="false" onAction="#speaker" prefHeight="26.0" prefWidth="0.0" AnchorPane.topAnchor="14.0">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../icon/icons8-speaker-24.png"/>
+                                <Image url="@../icon/icons8-speaker-24.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
             </children>
