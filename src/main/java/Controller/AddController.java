@@ -11,12 +11,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddController {
-
     @FXML
     private ResourceBundle resources;
     @FXML
     private URL location;
-
     @FXML
     private MainController mainController;
     @FXML
@@ -26,6 +24,7 @@ public class AddController {
     @FXML
     private Button addButton;
 
+    /* Add a Word to Dict. */
     @FXML
     private void addWord(ActionEvent action) {
         if (action.getSource() == addButton) {
@@ -53,6 +52,7 @@ public class AddController {
         }
     }
 
+    /* init state */
     public void Run(MainController currentState) {
         mainController = currentState;
         target.clear();

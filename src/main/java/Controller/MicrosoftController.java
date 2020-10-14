@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MicrosoftController {
-
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -24,6 +23,7 @@ public class MicrosoftController {
     @FXML
     private Button vListen;
 
+    /* translate while typing. */
     @FXML
     public void typing(KeyEvent even) {
         if (even.getSource() == English) {
@@ -37,6 +37,7 @@ public class MicrosoftController {
         }
     }
 
+    /* voice. */
     @FXML
     public void listen(ActionEvent event) {
         if (event.getSource() == eListen) {
@@ -54,6 +55,7 @@ public class MicrosoftController {
         }
     }
 
+    /* init state. */
     public void Run() {
         English.clear();
         Vietnamese.clear();

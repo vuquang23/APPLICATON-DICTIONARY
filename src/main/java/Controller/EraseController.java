@@ -14,6 +14,7 @@ public class EraseController {
     @FXML
     private Button EraseButton;
 
+    /* erase a word from dict. */
     @FXML
     private void eraseWord(ActionEvent action) {
         if (action.getSource() == EraseButton) {
@@ -39,6 +40,7 @@ public class EraseController {
         }
     }
 
+    /* init state. */
     public void Run(MainController currentState) {
         mainController = currentState;
         word.clear();

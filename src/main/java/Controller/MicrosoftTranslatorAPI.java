@@ -11,9 +11,9 @@ public class MicrosoftTranslatorAPI {
     private static String subscriptionKey = ("f2fba7565a694a6ab9bec851c55a83f9");
     private static String endpoint = ("https://api.cognitive.microsofttranslator.com/");
     static String url = endpoint + "/translate?api-version=3.0&to=vi";
-
     static OkHttpClient client = new OkHttpClient();
 
+    /* translate a text from english to vietnamese. */
     public static String Post(String translate) throws IOException {
         String content = "[{\n\t\"Text\": \"" + translate + "\"\n}]";
         MediaType mediaType = MediaType.parse("application/json");
@@ -27,6 +27,7 @@ public class MicrosoftTranslatorAPI {
         return response.body().string();
     }
 
+    /* get String from JSON ARRAY. */
     public static String Translate(String Word) {
         try {
             String json_text = Post(Word);

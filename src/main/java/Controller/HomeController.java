@@ -25,13 +25,13 @@ public class HomeController {
     private WebView webView;
     private WebEngine engine;
 
-
+    /* show searchlist */
     public void preWordSearch(String s) {
-        /*tra ve list cac tu cung tien to*/
         ArrayList<String> preWord = this.mainController.dict.searchPrefix(s);
         searchList.getItems().setAll(preWord);
     }
 
+    /* show content of a word. */
     public void showRight() {
         starButton.setVisible(true);
         String inputText = inputData.getText();
@@ -46,6 +46,7 @@ public class HomeController {
     @FXML
     private Button speakerButton;
 
+    /* voice. */
     @FXML
     void speaker(ActionEvent event) {
         if (event.getSource() == speakerButton) {
@@ -57,6 +58,7 @@ public class HomeController {
         }
     }
 
+    /* handle search key event. */
     @FXML
     public void startSearch(KeyEvent event) {
         if (event.getSource() == inputData) {
@@ -72,6 +74,7 @@ public class HomeController {
         }
     }
 
+    /* select a word in searchlist. */
     @FXML
     public void selectWordList(MouseEvent event) {
         String inputText = searchList.getSelectionModel().getSelectedItem();
@@ -84,6 +87,7 @@ public class HomeController {
     @FXML
     private Button starButton;
 
+    /* mark a word as favourite. */
     public void starWord(ActionEvent event) {
         if (event.getSource() == starButton) {
             boolean ok = this.mainController.dict.insertToBookMark(inputData.getText());
@@ -101,6 +105,7 @@ public class HomeController {
         }
     }
 
+    /* init state. */
     @FXML
     public void Run(MainController currentState) {
         this.mainController = currentState;

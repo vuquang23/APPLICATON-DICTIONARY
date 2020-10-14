@@ -13,7 +13,6 @@ public class Dictionary {
     private ArrayList<String> prefix;
     private ArrayList<String> allWord;
     static String path = System.getProperty("user.dir") + "/src/main/java/Data/";
-
     private ArrayList<String> bookmark;
     private ArrayList<String> realbookmark;
     private HashMap<String, Boolean> inBookmark;
@@ -86,9 +85,9 @@ public class Dictionary {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-
     }
 
+    /* check wether a word is valid. */
     public static boolean invalid(StringBuilder s) {
         if (s.length() == 0) {
             System.out.println("Word should contain only character!!!");
@@ -113,26 +112,24 @@ public class Dictionary {
         return false;
     }
 
+    /* find index of String in WordList. */
     public int lookUp(String a) {
         return T.findIndex(a, -1);
     }
 
+    /* get meaning of a String at id in Wordlist. */
     String getExplain(int id) {
         return wordList.get(id).getWord_explain();
     }
 
-    /************************PRE INIT************************************************************/
-    /**
-     * Add a new word
-     */
+    /* insert a word to Dictionary. */
     public void insertDict(String word, String mean) {
         int index = T.findIndex(word, wordList.size());
         Word newWord = new Word(word, mean);
         wordList.add(newWord);
     }
 
-
-    /*************************************SEARCH ALL PREFIX****************************************/
+    /* search a word with given prefix. */
     public void DFS(Node u) {
         if (u.index != -1) {
             prefix.add(wordList.get(u.index).getWord_target());
@@ -174,7 +171,7 @@ public class Dictionary {
         return prefix;
     }
 
-    /********************GET MEANING*************************************/
+    /* get meaning of a String. */
     public String getMeaning(String s) {
         StringBuilder sBuilder = new StringBuilder(s);
         if (invalid(sBuilder)) {
@@ -189,7 +186,7 @@ public class Dictionary {
     }
 
 
-    /*******************ERASE A WORD***********************************************/
+    /* erase a word. */
     public int eraseWord(String s) {
         StringBuilder sBuilder = new StringBuilder(s);
         if (invalid(sBuilder)) {
@@ -222,9 +219,9 @@ public class Dictionary {
             }
             return 2;
         }
-
     }
 
+    /* insert a word to database. */
     void insertToDatabase(String newTarget, String newExplain) {
         Connection c = null;
         Statement stmt = null;
@@ -243,7 +240,7 @@ public class Dictionary {
         }
     }
 
-    /*********************EDIT A WORD*********************************/
+    /* edit a word exited in dictionary. */
     public int editWord(String Target, String newTarget, String newExplain) {
         StringBuilder starget = new StringBuilder(Target);
         StringBuilder snewTarget = new StringBuilder(newTarget);
@@ -272,7 +269,7 @@ public class Dictionary {
         return 4; /// success;
     }
 
-    /*********************************ADD A WORD***********************************/
+    /* add a word. */
     public int insertAWord(String Target, String Meaning) {
         StringBuilder starget = new StringBuilder(Target);
 
@@ -292,8 +289,7 @@ public class Dictionary {
         return 2; // success
     }
 
-
-    /**************************************************************/
+    /*show all word.*/
     public ArrayList<String> showWordList() {
         allWord.clear();
         for (int i = 0; i < wordList.size(); ++i) {
@@ -306,7 +302,7 @@ public class Dictionary {
         return allWord;
     }
 
-    /****************************************************************/
+    /*show favourite word.*/
     public ArrayList<String> showBookMark() {
         realbookmark.clear();
         for (int i = 0; i < bookmark.size(); ++i) {
@@ -318,7 +314,7 @@ public class Dictionary {
         return realbookmark;
     }
 
-    /***************************************************************/
+    /*insert a word to bookmark.*/
     public boolean insertToBookMark(String s) {
         if (inBookmark.containsKey(s)) {
             return false;
@@ -345,7 +341,7 @@ public class Dictionary {
         return true;
     }
 
-    /***************************************************************/
+    /*remove from bookmark.*/
     public void removeFromBookMark(String s) {
         inBookmark.remove(s);
         bookmark.remove(s);

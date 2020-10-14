@@ -19,6 +19,7 @@ public class EditController {
     @FXML
     private Button changeButton;
 
+    /* change a word exited in dict. */
     @FXML
     private void changeWord(ActionEvent action) {
         if (action.getSource() == changeButton) {
@@ -53,6 +54,7 @@ public class EditController {
         }
     }
 
+    /* init state. */
     public void Run(MainController currentState) {
         mainController = currentState;
         Target.clear();

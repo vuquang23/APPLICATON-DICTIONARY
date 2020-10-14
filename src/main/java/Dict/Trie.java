@@ -45,6 +45,7 @@ public class Trie {
         return cur.index;
     }
 
+    /*erase a word*/
     public void eraseWord(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); ++i) {

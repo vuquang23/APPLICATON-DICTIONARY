@@ -13,17 +13,16 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     @FXML
     private AnchorPane contentPane;
-
     /*Import dictionary*/
     public Dictionary dict;
 
+    /* set up search func. */
     @FXML
     private Button homeButton;
     @FXML
     private AnchorPane homePane;
     @FXML
     private HomeController homeController;
-
     public void showhomePane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(homePane, 0.0);
@@ -35,13 +34,13 @@ public class MainController implements Initializable {
     }
 
 
+    /*set up edit func. */
     @FXML
     private Button editButton;
     @FXML
     private AnchorPane editPane;
     @FXML
     private EditController editController;
-
     public void showeditPane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(editPane, 0.0);
@@ -53,13 +52,13 @@ public class MainController implements Initializable {
     }
 
 
+    /* set up add func. */
     @FXML
     private Button addButton;
     @FXML
     private AnchorPane addPane;
     @FXML
     private AddController addController;
-
     public void showaddPane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(addPane, 0.0);
@@ -71,13 +70,13 @@ public class MainController implements Initializable {
     }
 
 
+    /* set up erase func. */
     @FXML
     private Button eraseButton;
     @FXML
     private AnchorPane erasePane;
     @FXML
     private EraseController eraseController;
-
     public void showerasePane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(erasePane, 0.0);
@@ -89,13 +88,13 @@ public class MainController implements Initializable {
     }
 
 
+    /* set up Favourite func. */
     @FXML
     private Button bookmarkButton;
     @FXML
     private AnchorPane bookmarkPane;
     @FXML
     private BookmarkController bookmarkController;
-
     public void showbookmarkPane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(bookmarkPane, 0.0);
@@ -107,13 +106,13 @@ public class MainController implements Initializable {
     }
 
 
+    /* set up with API */
     @FXML
     private Button microsoftButton;
     @FXML
     private AnchorPane microsoftPane;
     @FXML
     private MicrosoftController microsoftController;
-
     public void showmicrosoftPane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(microsoftPane, 0.0);
@@ -125,11 +124,11 @@ public class MainController implements Initializable {
     }
 
 
+    /* set up back pane*/
     @FXML
     private Button backButton;
     @FXML
     private AnchorPane backPane;
-
     public void showbackPane() {
         AnchorPane anchorpane = new AnchorPane();
         AnchorPane.setTopAnchor(backPane, 0.0);
@@ -140,6 +139,7 @@ public class MainController implements Initializable {
         anchorpane = null;
     }
 
+    /* options. */
     @FXML
     public void Handle(ActionEvent action) {
         if (action.getSource() == homeButton) {
@@ -165,6 +165,7 @@ public class MainController implements Initializable {
         }
     }
 
+    /* init. */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {

@@ -4,6 +4,8 @@ import com.microsoft.cognitiveservices.speech.SpeechSynthesizer;
 import com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig;
 
 public class MicrosoftSpeechAPI {
+
+    /* read a text. */
     public static void Read(String text, String from) {
         try {
             String speechSubscriptionKey = "87974ecd4d94432ead0761490c4bd673";

@@ -21,6 +21,7 @@ public class BookmarkController {
 
     private String curString = "";
 
+    /* Show meaning of Favourite Word. */
     public void showRight() {
         String inputText = curString;
         String meaning = this.mainController.dict.getMeaning(inputText);
@@ -36,8 +37,8 @@ public class BookmarkController {
     private Button speakerButton;
     @FXML
     private Button removeButton;
-
     @FXML
+        /* handle mouse event */
     void mouseEvent(ActionEvent event) {
         if (event.getSource() == speakerButton) {
             String s = curString;
@@ -52,7 +53,7 @@ public class BookmarkController {
         }
     }
 
-
+    /* chose a word from wordlist. */
     @FXML
     public void selectWordList(MouseEvent event) {
         String inputText = bookmarkList.getSelectionModel().getSelectedItem();
@@ -61,6 +62,7 @@ public class BookmarkController {
         showRight();
     }
 
+    /* reload page. */
     void reload() {
         engine.load("");
         ArrayList<String> allWord = this.mainController.dict.showBookMark();
@@ -68,6 +70,7 @@ public class BookmarkController {
         curString = "";
     }
 
+    /* init state. */
     @FXML
     public void Run(MainController currentState) {
         this.mainController = currentState;
